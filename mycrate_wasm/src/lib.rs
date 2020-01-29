@@ -7,6 +7,16 @@ pub fn add(a: i32, b: i32) -> i32 {
 }
 
 #[wasm_bindgen]
-pub fn create_greeting(name: &str) -> String {
+pub fn create_greeting(name: String) -> String {
     format!("Hei, {}!", name)
+}
+
+#[wasm_bindgen]
+extern {
+    fn alert(msg: String);
+}
+
+#[wasm_bindgen]
+pub fn greet(name: String) {
+    alert(create_greeting(name))
 }
